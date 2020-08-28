@@ -8,4 +8,4 @@ Used [cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data
 
 ## Usage
 
-After installing the `cookiecutter` Python package, run `cookiecutter github.com/tnwei/cookiecutter-datascience-lite` to create a new project repo. Caution: early work in progress!
+After installing the `cookiecutter` Python package, run `cookiecutter https://github.com/tnwei/cookiecutter-datascience-lite` to create a new project repo. Caution: early work in progress!
