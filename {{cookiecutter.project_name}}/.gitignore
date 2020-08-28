@@ -1,0 +1,4 @@
+# Common Python excludes
+**/.ipynb_checkpoints/
+**/__pycache__/
+
