@@ -7,11 +7,18 @@
 
 ## File structure
 <!-- Add as the project grows! -->
-+ `code/`: Contains Jupyter notebooks and Python scripts
-+ `data/`: Contains data for the project
-+ `README.md`: README file, briefly describes the project
-+ `TODO.md`: TODO list for project-specific task tracking
-+ `.gitignore`: Records list of files to skip tracking in `git`
+```
+ ├── assets/        : Stores static files that are used in the project
+ ├── code/          : Stores scripts and Jupyter notebooks
+ │   └── data.py    : Python module to implement data loading functions
+ ├── data/          : Stores data for the project
+ ├── .gitignore     : List of files to skip tracking in git
+ ├── output/        : Stores project output, be it plots or predictions
+ ├── README.md      : Project README
+ ├── references/    : Stick reference documents here. Recommended to exclude f
+    rom version control.
+ └── TODO.md        : TODO list for project-specific task tracking
+```
 
 ## Requirements
 <!-- Describe package requirements -->
