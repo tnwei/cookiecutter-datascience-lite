@@ -7,7 +7,8 @@ Note: This repo is a WIP, predominantly focused on usage on Linux.
 
 ## Motivation
 
-Used [cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) for a bit, personally grew to prefer starting projects with a clutter-free bare minimum project structure, and gradually expanding the project as needed.
+I used [cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) for a bit, personally grew to prefer starting projects with a clutter-free bare minimum project structure, and gradually expanding the project as needed. Thus this repo.
+
 
 ## Directory Structure
 
@@ -22,3 +23,10 @@ Used [cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data
  ├── references/    : Stick reference documents here. Recommended to exclude from version control.
  └── TODO.md        : TODO list for project-specific task tracking
 ``` 
+
+## Design intent
++ `code/` is specified minimally, containing both scripts and notebooks. This is for the convenience of sharing code in common Python modules. For more complex projects, it is left to the user to spin off dedicated `scripts`, `notebooks`, `src` directories and a `setup.py` file.
++ A default `data.py` is placed in `code/` for the data scientist to implement data loading functions as needed.
++ `output` folder is not compartmentalized between reports, plots, prediction outputs etc. It is left to the user to create subfolders for larger projects. 
++ `.gitignore` defaults are minimally specified, no assumptions are made for tracking / not tracking repo folders in VCS. Left to user to decide e.g. whether to track `assets`, `TODO.md` etc.
++ At the moment, a `docs/` folder is not provisioned. Small projects have info contained in README and notebooks. Up to user to implement if scope calls for it.
