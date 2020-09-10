@@ -1,5 +1,4 @@
 {
     "project_name": "Project Name",
-    "conda_env_name": "{{cookiecutter.project_name}}"
 }
 
