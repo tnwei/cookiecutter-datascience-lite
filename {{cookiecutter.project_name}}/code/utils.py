@@ -42,4 +42,3 @@ def get_logger(fname, level=logging.DEBUG):
 
     logger.propagate = False
     return logger
-    
