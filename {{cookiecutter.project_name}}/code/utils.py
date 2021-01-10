@@ -1,24 +1,21 @@
 import logging
+import logging.config
 
-
-def get_logger(fname, level=logging.DEBUG):
+def get_logger(name, conf_file_loc="../conf/logging.yml"):
     """
-    Python logger object with reasonable defaults
+    Python logger object with reasonable defaults.
+    Uses hard-coded configuration in absence of PyYAML or the configuration file.
 
     Usage
     -----
-    >>> logger = get_logger(__name__, logging.INFO)
-    >>> logger.info("
+    >>> logger = get_logger(__name__)
+    >>> logger.info("Hello there!")
 
     Args
     ----
     fname: string
         Name to pass to logging.getLogger. Typically
         __name__ is passed.
-
-    level: logging Level objects, or ints
-        Logging level to pass to logging.setLevel().
-        Ref: https://docs.python.org/3/library/logging.html#levels
 
     Returns
     -------
@@ -27,18 +24,45 @@ def get_logger(fname, level=logging.DEBUG):
     if name is None:
         name = "root"
 
+    # Check if can load yaml or if the file exists
+    try:
+        import yaml
+
+        with open(conf_file_loc, "r") as f:
+            config = yaml.safe_load(f.read())
+
+    except:
+        # If not possible, use hard-coded configuration
+        config = {
+            "formatters": {
+                "detailed": {
+                    "datefmt": "%Y-%m-%d %H:%M:%S+%z",
+                    "format": "%(asctime)s | %(name)s | (%(levelname)s) | %(message)s",
+                },
+                "simple": {
+                    "datefmt": "%Y-%m-%d %H:%M:%S+%z",
+                    "format": "(%(levelname)s): %(message)s",
+                },
+            },
+            "handlers": {
+                "console": {
+                    "class": "logging.StreamHandler",
+                    "formatter": "simple",
+                    "level": "DEBUG",
+                    "stream": "ext://sys.stdout",
+                },
+                "file": {
+                    "backupCount": 3,
+                    "class": "logging.handlers.RotatingFileHandler",
+                    "filename": "../logs/logoutput.log",
+                    "formatter": "detailed",
+                    "maxBytes": 4096,
+                },
+            },
+            "root": {"handlers": ["console", "file"], "level": "DEBUG"},
+            "version": 1,
+        }
+
+    logging.config.dictConfig(config)
     logger = logging.getLogger(name)
-    logger.setLevel(level)
-    formatter = logging.Formatter(
-        "%(asctime)s | %(name)s - %(levelname)s | %(message)s", "%Y-%m-%d %H:%M:%S"
-    )
-
-    # Only add handlers if does not have already
-    # Combined w propagate=False, prevents duplicate log msgs
-    if logger.hasHandlers() is False:
-        ch = logging.StreamHandler()
-        ch.setFormatter(formatter)
-        ch.setLevel(logging.DEBUG)
-
-    logger.propagate = False
     return logger

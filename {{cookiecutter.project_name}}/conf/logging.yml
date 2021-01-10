@@ -1,0 +1,29 @@
+version: 1
+formatters:
+  simple:
+    format: "(%(levelname)s) %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S+%z"
+  detailed:
+    format: "%(asctime)s | %(name)s | (%(levelname)s) | %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S+%z"
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+  file:
+    class : logging.handlers.RotatingFileHandler
+    formatter: detailed
+    filename: ../logs/logoutput.log
+    maxBytes: 4096
+    backupCount: 3
+# Specify for further, more specific loggers if needed
+# loggers:
+#   defaultLogger:
+#     level: DEBUG
+#     handlers: [console, file]
+#     propagate: no
+root:
+  level: DEBUG
+  handlers: [console, file]
