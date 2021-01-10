@@ -1,8 +1,10 @@
 # {{cookiecutter.project_name}}
 
-<!-- Populate brief project description -->
+<!-- Purpose of project -->
+<!-- Brief project description -->
 
 ## Description
+
 <!-- Elaborate on brief description -->
 
 ## File structure
@@ -11,17 +13,21 @@
  ├── assets/        : Stores static files that are used in the project
  ├── code/          : Stores scripts and Jupyter notebooks
  │   └── data.py    : Python module to implement data loading functions
+ │   └── utils.py   : Python module to implement utility functions
  ├── data/          : Stores data for the project
+ ├── docs/          : Stores documentation for the project
  ├── .gitignore     : List of files to skip tracking in git
+ ├── logs/          : Stores logs for the project
  ├── output/        : Stores project output, be it plots or predictions
  ├── README.md      : Project README
  ├── references/    : Stick reference documents here. Recommended to exclude f
     rom version control.
  └── TODO.md        : TODO list for project-specific task tracking
+
 ```
 
 ## Requirements
-<!-- Describe package requirements -->
+<!-- Describe project requirements -->
 
 ------------------
 
