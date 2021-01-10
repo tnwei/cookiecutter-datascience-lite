@@ -14,6 +14,7 @@
  ├── code/          : Stores scripts and Jupyter notebooks
  │   └── data.py    : Python module to implement data loading functions
  │   └── utils.py   : Python module to implement utility functions
+ ├── conf/          : Stores configuration files for the project
  ├── data/          : Stores data for the project
  ├── docs/          : Stores documentation for the project
  ├── .gitignore     : List of files to skip tracking in git
