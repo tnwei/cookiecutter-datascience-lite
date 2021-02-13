@@ -16,5 +16,11 @@ from utils import get_logger
 logger = get_logger(__name__)
 ```
 
+### Pre-commit
 
+This cookiecutter comes with a default `.pre-commit-config.yaml`. After pre-commit is installed, run the following in the project directory to set up the commit hooks:
+```
+pre-commit install
+pre-commit install --hook-type commit-msg
+```
 
