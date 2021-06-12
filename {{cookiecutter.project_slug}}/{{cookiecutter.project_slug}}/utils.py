@@ -1,7 +1,7 @@
 import logging
 import logging.config
 
-def get_logger(name, conf_file_loc="../conf/logging.yml"):
+def get_logger(name, level=logging.INFO, conf_file_loc="../conf/logging.yml"):
     """
     Python logger object with reasonable defaults.
     Uses hard-coded configuration in absence of PyYAML or the configuration file.
@@ -65,4 +65,7 @@ def get_logger(name, conf_file_loc="../conf/logging.yml"):
 
     logging.config.dictConfig(config)
     logger = logging.getLogger(name)
+    logger.setLevel(level) 
+
     return logger
+
