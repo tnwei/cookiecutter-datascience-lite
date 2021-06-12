@@ -1,0 +1,10 @@
+# mkdocs template for documentation
+# refer to https://www.mkdocs.org/getting-started/
+site_name: {{cookiecutter.project_name}}
+nav:
+    - Home: index.md
+    # add pages from docs/ in here
+theme:
+    name: material # pip install mkdocs-material
+    # name: gitbook # pip install mkdocs-gitbook
+plugins: [ ]
