@@ -3,7 +3,7 @@ import os
 
 ### Print output path ----------------------------------------------
 
-project_name = "{{ cookiecutter.project_name }}"
+project_slug = "{{ cookiecutter.project_slug }}"
 project_path = os.path.abspath(os.path.join("..", project_slug))
 
 print("New project directory created at %s" % project_path)
