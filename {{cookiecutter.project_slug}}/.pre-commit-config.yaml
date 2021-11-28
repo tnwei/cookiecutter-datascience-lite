@@ -13,5 +13,4 @@ repos:
     rev: "v0.15.1" 
     hooks:
     -   id: gitlint
-        # required to refer to .gitlint from where the pre-commit venv is
-        args: [-C ../../../.gitlint, --msg-filename]
+        args: [--msg-filename]
