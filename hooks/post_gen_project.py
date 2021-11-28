@@ -12,12 +12,14 @@ print()
 ### Print helpful statements ---------------------------------------
 
 print(
-"""A default .pre-commit-config.yaml is included in the project dir.
-To use it, install `pre-commit` and run:
+    """A default .pre-commit-config.yaml is included in the project dir.
+To use it, install `pre-commit`, `cd` into the project dir and run:
 
+$ git init
 $ pre-commit install -t pre-commit -t commit-msg
 
-in the project dir. Refer to https://pre-commit.com/ for more info.""")
+Refer to https://pre-commit.com/ for more info."""
+)
 print()
 
 ### Exit -----------------------------------------------------------
