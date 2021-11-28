@@ -11,6 +11,4 @@ repos:
     rev: v0.15.1
     hooks:
     -   id: gitlint
-        args:
-        - -C ../../../.gitlint
-        - --msg-filename
+        args: [--msg-filename]
