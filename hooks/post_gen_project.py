@@ -13,8 +13,11 @@ print()
 
 print(
 """A default .pre-commit-config.yaml is included in the project dir.
-To use it, install `pre-commit` and run `pre-commit install` in
-the project dir. Refer to https://pre-commit.com/ for more info.""")
+To use it, install `pre-commit` and run:
+
+$ pre-commit install -t pre-commit -t commit-msg
+
+in the project dir. Refer to https://pre-commit.com/ for more info.""")
 print()
 
 ### Exit -----------------------------------------------------------
