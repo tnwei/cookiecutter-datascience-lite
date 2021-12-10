@@ -16,7 +16,7 @@ print(
 To use it, install `pre-commit`, `cd` into the project dir and run:
 
 $ git init
-$ pre-commit install -t pre-commit
+$ pre-commit install -t commit-msg
 
 Refer to https://pre-commit.com/ for more info."""
 )
