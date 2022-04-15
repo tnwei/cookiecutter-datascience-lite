@@ -56,6 +56,10 @@ If you prefer other packaging methods like PyEnv and Poetry, feel free to roll y
 
 ## Tests
 
+Simple stuff like using pytest. Import code from the code folder and run them here.
+
+Concept of unit test and integration tests. Should test especially if have key pieces of logic that needs to be relied on. Don't bother testing once-off and unimportant logic.
+
 ## Git commit linting
 
 ## Python code qualiy

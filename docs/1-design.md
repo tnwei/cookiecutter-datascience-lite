@@ -12,5 +12,8 @@ As mentioned in the readme, design intent is :
 
 Not uncommon for DS projects to start small and adhoc, then balloon into something. Thus makes sense to have sth that barely takes any effort to set up and use so even the most adhoc of data work starts structured. Also prevents you from revisiting a repo from donkey months ago with no recollection of what happened in here
 
-Not recommnded for projects involving large teams however. Stick to a larger, more structured repo. Better for team.
+## Target audience
 
+Small teams / solo teams dealing with projects with a lot of uncertainty / have open-ended outcomes
+
+For projects involving large teams however, recommend instead to stick to a more structured repo like cookiecutter data science and kedro. 

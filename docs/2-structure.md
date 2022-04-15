@@ -1,9 +1,8 @@
 # Structure overview
 
-Place Tree here similar to README
+We create a project repo called `iris` for sake of demonstration. The repo will have the following directory structure:
 
 ```
-$ tree
 .
 ├── assets
 ├── data
@@ -16,69 +15,92 @@ $ tree
 
 ```
 
+This cookiecutter creates the following folders upon init:
+
++ Code and notebooks are stored in the folder named after the project slug, in this case `iris`. 
++ `data` is self-explanatory. 
++ All artifacts generated goes into `output`, but if they are reusable like models, data pipelines etc, they go into `assets`. 
++ `logs` stores logging output. 
+
+This cookiecutter also creates a default README and reasonable default dotfiles (See 3-recipes.md)
+
+These are the core folders, occasionally more stuff is required. Some of these are included in `.template`. Read more in 3-optional-structure. 
+
+## Code
+
+### Subdir structure
+
+This is how my code folder tends to look like:
+
+```
+iris/
+├── 1.0-data-extraction.ipynb
+├── 1.1-data-extraction.ipynb
+├── 2.0-eda.ipynb
+├── 2.1-eda.ipynb
+├── 3.0-baseline-model.ipynb
+├── 4.0-explore-specific-feature-X.ipynb
+├── 5.0-explore-specific-feature-y.ipynb
+├── 6.0-integrate-ml-with-business-logic.ipynb
+├── 6.1-integrate-ml-with-business-logic.ipynb
+├── 6.2-integrate-ml-with-business-logic.ipynb
+├── 7.0-hyperparameter-search.ipynb
+├── data.py
+├── utils.py
+├── net.py
+├── pipeline.py
+...
+```
+
+I chose to stick both modules and notebooks in the same folder. This is for the convenience of sharing code in common Python modules, as opposed to having separate folders for notebooks and scripts. The project slug is chosen as the code directory name, because it makes it easy to package as a Python library if required. This works because notebooks and markdown files are ignored during packaging unless explicitly included. 
+
+Two placeholder modules are specified:
+
++ A default `data.py` for data loading functions, and
++ A default `utils.py` for utility functions, which includes a preconfigured logger.
+
+Given that this is the working folder, occasionally markdown files are included for brainstorming purposes. 
+
+### Semver system
+
+Use sem ver when it comes to notebooks and scripts. Each new line of inquiry is its own major version. Updates are minor versions. Modules that store importable code and are meant to be reused do not follow this semver system.
+
+Used to just call this folder `code/`, but that actually conflicts with a std lib! 
+
 ## Data
 
-`data/` folder. Suggestions:Create a README within `data/` to record brief descriptions of locally stored files, as well as URLs to data stored in buckets etc
+### Structuring the subdir
+
+Can make the data folder as extensive as possible, or as simple as possible. 
+
+You can treat it like a bucket, storing every single thing for really small projects. Or you can also organize them organically, e.g. group by date or by type. 
+
+Typically, I create `raw` and `processed` subdirs for locally stored data to differentiate between data received as-is, and data that has been processed somewhat and ready for further use. 
+
+For more extensive examples, can study how cookiecutter data science or Kedro organize their folders. TODO: Leave links
+
+### Data README
+
+If there's a lot of data, create a README to record what file does what. Also useful for storing URLs for data stored in the cloud. 
 
 Example README:
 
 ```
-
+TODO
 ```
+
+### Mounting a hard drive (Linux)
 
 Might even consider linking the data to a large hard drive. Cheat sheet below:
 
+```bash
+# Link data/ to a folder in /mnt/data/iris-data
+TODO
+
+# Unlink the folder
+# Warning: calls delete under the hood, be careful with this command!
+TODO
 ```
-
-```
-
-Can make it as extensive as possible, or as simple as possible. Personally like to separate between `raw` and `processed` for locally stored data. Extensive examples can look at cookiecutter data science or kedro (include examples below)
-
-## Code
-
-Example from a real project (names modified):
-
-```
-TODO tree
-```
-
-+ `code/` is specified minimally, containing both scripts and notebooks. This is for the convenience of sharing code in common Python modules. For more complex projects, it is left to the user to spin off dedicated `scripts`, `notebooks`, `src` directories and a `setup.py` file.
-+ A default `data.py` is placed in `code/` for the data scientist to implement data loading functions as needed.
-+ A default `utils.py` is placed in `code/` to house utility functions. 
-+ Reasonable logging defaults provided in `conf/`, writes to `logs/`. Inspired by Kedro on this one.
-
-+ A subdir with the name of the project slug designed to store scripts, notebooks and the occasional markdown file during development
-+ Use project slug because then it becomes easier to package into a Python package if need be. Notebooks and markdown files will be ignored unless explicitly included. 
-+ setup.py template included for packaging. Out of many methods for Python packaging, still the simplest and most efficient way to do it. See dedicated packaging section
-+ Numbered 1.0, 2.0, 3.0 etc. Modifications upon previous versions are stored by incrementing minor versions.
-+ Modules for reusable code doesn't have numbers
-+ Mainstays of the code folder is a data.py and utils.py. data.py for everything involved with loading data, utils.py for small utility functions.
-+ Used to be just called `code/` but that actually conflicts with a std lib! 
-
-
-## Configuration
-
-If a lot of configuration is required e.g. training deep learning models, suggest to open a new `conf/` folder and store configuration files there.
-
-
-## References
-
-Put files here that are not directly involved in development, but are somewhat related. e.g. old handover code, supporting info from Powerpoints od Docx files, PDFs etc
-
-## Docs
-
-Dump any project documentation into `docs/`. 
-+ At the moment, a `docs/` folder is not provisioned. Small projects have info contained in README and notebooks. Up to user to implement if scope calls for it.
-
-Can do it as an information dump:
-
-```
-TODO tree of informal info dump
-```
-
-If time permits, can set things up with neat documentation. 
-
-See Documentation section
 
 ## Assets and outputs
 
@@ -87,7 +109,3 @@ A single `output` folder stored the results of running code. Can be anything bet
 
 Outputs can be a simple dump folder, or extensively sort them into plots / results etc
 + `output` folder is not compartmentalized between reports, plots, prediction outputs etc. It is left to the user to create subfolders for larger projects. 
-
-## Dotfiles
-
-TODO: Explain what the dotfiles do, link to recipes for what they do
